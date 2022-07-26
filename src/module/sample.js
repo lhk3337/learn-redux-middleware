@@ -24,44 +24,44 @@ export const getUsers = () => {
   return { type: GET_USERS };
 };
 
-// const getPostSaga = createRequestSaga(GET_POST, api.getPost);
-// const getUsersSaga = createRequestSaga(GET_USERS, api.getUsers);
+const getPostSaga = createRequestSaga(GET_POST, api.getPost);
+const getUsersSaga = createRequestSaga(GET_USERS, api.getUsers);
 
-function* getPostSaga(action) {
-  yield put(startLoading(GET_POST));
-  try {
-    const post = yield call(api.getPost, action.payload);
-    yield put({
-      type: GET_POST_SUCCESS,
-      payload: post.data,
-    });
-  } catch (e) {
-    yield put({
-      type: GET_POST_FAILURE,
-      payload: e,
-      error: true,
-    });
-  }
-  yield put(finishLoading(GET_POST));
-}
+// function* getPostSaga(action) {
+//   yield put(startLoading(GET_POST));
+//   try {
+//     const post = yield call(api.getPost, action.payload);
+//     yield put({
+//       type: GET_POST_SUCCESS,
+//       payload: post.data,
+//     });
+//   } catch (e) {
+//     yield put({
+//       type: GET_POST_FAILURE,
+//       payload: e,
+//       error: true,
+//     });
+//   }
+//   yield put(finishLoading(GET_POST));
+// }
 
-function* getUsersSaga() {
-  yield put(startLoading(GET_USERS));
-  try {
-    const users = yield call(api.getUsers);
-    yield put({
-      type: GET_USERS_SUCCESS,
-      payload: users.data,
-    });
-  } catch (e) {
-    yield put({
-      type: GET_USERS_FAILURE,
-      payload: e,
-      error: true,
-    });
-  }
-  yield put(finishLoading(GET_USERS));
-}
+// function* getUsersSaga() {
+//   yield put(startLoading(GET_USERS));
+//   try {
+//     const users = yield call(api.getUsers);
+//     yield put({
+//       type: GET_USERS_SUCCESS,
+//       payload: users.data,
+//     });
+//   } catch (e) {
+//     yield put({
+//       type: GET_USERS_FAILURE,
+//       payload: e,
+//       error: true,
+//     });
+//   }
+//   yield put(finishLoading(GET_USERS));
+// }
 
 export function* sampleSaga() {
   yield takeLatest(GET_POST, getPostSaga);
