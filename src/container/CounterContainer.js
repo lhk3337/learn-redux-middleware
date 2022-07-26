@@ -14,3 +14,5 @@ const CounterContainer = () => {
 };
 
 export default CounterContainer;
+
+// increaseAsync Action -> counterSaga -> increaseSaga (redux Saga) -> delay 1초 -> increase Action
